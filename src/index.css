@@ -1,0 +1,12 @@
+.active {
+    color: #000;
+    font-weight: 900;
+    border-bottom: solid 1px #a73a3a;
+    padding-bottom: 2px;
+  
+}
+
+.navLink{
+    text-decoration: none;
+    margin: 0 20px;
+}
