@@ -1,17 +1,35 @@
 import axios from 'axios';
 import { useFormik } from 'formik';
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import Note from '../../components/Note/Note';
+// import displayNote from '../../helpers/displayNote';
 
 const Home = () => {
 
   const [show, setShow] = useState(false);
-
+  const [notes , setNotes] = useState(null)
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const displayNote = async ()=>{
+
+    const{data} = await axios.get(`https://note-sigma-black.vercel.app/api/v1/notes` , {
+        headers : {
+              token : `3b8ny__${localStorage.getItem("token")}`
+
+        }
+        
+    })
+    console.log(data);
+    setNotes(data.notes)
+
+} 
+useEffect(()=>{
+  displayNote()
+} , [])
   const addNote =  (values : any)=>{
      axios.post(`https://note-sigma-black.vercel.app/api/v1/notes` , values , {
       headers:{
@@ -19,7 +37,10 @@ const Home = () => {
       }
       
     }).then(({data})=>{
+  displayNote()
+
       console.log(data);
+
       
     }).catch((err)=>{
       console.log(err);
@@ -73,6 +94,11 @@ const Home = () => {
           <Button type='submit' onClick={handleSubmit} variant="primary ">Add</Button>
         </Modal.Footer>
       </Modal>
+      
+
+      {
+        notes?.map((note)=><Note key={note._id} note={note} />)
+      }
     </>
   )
 }
