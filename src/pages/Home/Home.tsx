@@ -10,26 +10,36 @@ import Note from '../../components/Note/Note';
 const Home = () => {
 
   const [show, setShow] = useState(false);
-  const [notes , setNotes] = useState(null)
+  const [notes , setNotes] = useState(null) ;
+  const [noNotes , setNoNotes] = useState(false)
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const displayNote = async ()=>{
 
-    const{data} = await axios.get(`https://note-sigma-black.vercel.app/api/v1/notes` , {
+     axios.get(`https://note-sigma-black.vercel.app/api/v1/notes` , {
         headers : {
               token : `3b8ny__${localStorage.getItem("token")}`
 
         }
         
+    }).then(({data})=>{
+      console.log(data);
+      setNotes(data.notes) ;
+      setNoNotes(false)
+    }).catch((err)=>{
+      setNoNotes(true)
     })
-    console.log(data);
-    setNotes(data.notes)
+    
 
-} 
+}
+
+
 useEffect(()=>{
   displayNote()
 } , [])
+
+
   const addNote =  (values : any)=>{
      axios.post(`https://note-sigma-black.vercel.app/api/v1/notes` , values , {
       headers:{
@@ -96,9 +106,18 @@ useEffect(()=>{
       </Modal>
       
 
-      {
-        notes?.map((note)=><Note key={note._id} note={note} />)
-      }
+      <div className=" row">
+        <div className='md-4 d-flex'>
+       {
+        noNotes == true ? <p>Theres No notes</p> :  <>
+        
+        {
+          notes?.map((note , index)=><Note key={note._id} note={note} index={index} displayNote={displayNote}/>)
+        }
+        </>
+       }
+        </div>
+      </div>
     </>
   )
 }
