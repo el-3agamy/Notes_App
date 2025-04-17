@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useFormik } from 'formik';
-import React, { useEffect } from 'react'
+import  { useEffect } from 'react'
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -9,7 +9,7 @@ import Note from '../../components/Note/Note';
 
 const Home = () => {
 
-  const [notes , setNotes] = useState(null) ;
+  const [notes , setNotes] = useState([]) ;
   const [noNotes , setNoNotes] = useState(false) ;
   const [loading , setLoading] = useState(false) ;
   
@@ -133,7 +133,7 @@ useEffect(()=>{
        <div className='container '>
        <div className="row justify-content-center align-items-center g-3">
        {
-          notes?.map((note , index)=><div className='col-md-4 d-flex justify-content-center align-items-center  mx-auto'><Note  key={note._id} note={note} index={index} displayNote={displayNote}/></div>)
+          notes?.map((note  , index)=><div className='col-md-4 d-flex justify-content-center align-items-center  mx-auto'><Note  key={note._id} note={note} index={index} displayNote={displayNote}/></div>)
         }
        </div>
        </div>
