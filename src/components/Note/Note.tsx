@@ -4,6 +4,7 @@ import { useFormik } from 'formik';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Modal from 'react-bootstrap/Modal';
+import ListGroup from 'react-bootstrap/ListGroup';
 
 
 const Note = ({note , index , displayNote}:any) => {
@@ -85,13 +86,16 @@ const Note = ({note , index , displayNote}:any) => {
   return (
    <>
      <Card style={{ width: '18rem' }}>
-      <Card.Body>
-        <Card.Title>{note?.title}</Card.Title>
-        <Card.Text>
-         {note?.content}
-        </Card.Text>
+      {/* <Card.Body className='justify-content-center d-flex flex-column align-items-center m-auto text-center' >
+         
+        
+        
         <Button variant="primary">Go somewhere</Button>
-      </Card.Body>
+      </Card.Body> */}
+      <ListGroup className="list-group-flush ">
+        <ListGroup.Item className='text-center text-success text-capitalize'><Card.Title >{note?.title}</Card.Title></ListGroup.Item>
+        <ListGroup.Item><Card.Text > {note?.content}</Card.Text></ListGroup.Item>
+      </ListGroup>
       <div className='d-flex justify-content-around my-3'>
       <Button variant="outline-primary" onClick={()=>handleShow()}><i className='fas fa-pen'></i></Button>
       <Button variant="outline-danger" onClick={()=>removeNote(note._id)}><i className='fas fa-trash'></i></Button>

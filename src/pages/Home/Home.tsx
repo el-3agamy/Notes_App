@@ -125,18 +125,22 @@ useEffect(()=>{
       </Modal>
       
 
-      <div className=" row">
-        <div className='md-4 d-flex'>
+     
+       
        {
-        noNotes == true ? <p>Theres No notes</p> :  <>
+        noNotes == true ? <p className='text-center fa-2x text-danger'>Theres No notes</p> :  <>
         
-        {
-          notes?.map((note , index)=><Note key={note._id} note={note} index={index} displayNote={displayNote}/>)
+       <div className='container '>
+       <div className="row justify-content-center align-items-center g-3">
+       {
+          notes?.map((note , index)=><div className='col-md-4 d-flex justify-content-center align-items-center  mx-auto'><Note  key={note._id} note={note} index={index} displayNote={displayNote}/></div>)
         }
+       </div>
+       </div>
         </>
        }
-        </div>
-      </div>
+       
+     
       </>
     }
     </>
