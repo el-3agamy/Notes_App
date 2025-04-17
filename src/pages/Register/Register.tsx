@@ -8,10 +8,11 @@ import * as Yup from 'yup'
 
 const Register = () => {
   const [errorMsg , setErrorMsg] = useState(null)  ;
-  // const [loading , setLoading] = useState(false)
+  const [loading , setLoading] = useState(false)
   const navigate: any = useNavigate();
 
   const onSubmit = async (values: object) => {
+    setLoading(true)
     setErrorMsg(null)
     const { data } = await axios.post(`https://note-sigma-black.vercel.app/api/v1/users/signUp`, values)
     console.log(values);
@@ -23,6 +24,7 @@ const Register = () => {
     setErrorMsg(data.msg)
       
     }
+    setLoading(false)
   };
 
   const validationSchema = Yup.object({
@@ -80,8 +82,8 @@ const Register = () => {
             </Form.Group>
             {formik.errors.phone && formik.touched.phone && <div className='my-3 bg-danger-subtle p-2 rounded rounded-2'>{formik.errors.phone}</div>}
 
-            <Button variant="primary" type="submit" className='w-100'>
-              Rigester Now
+            <Button variant="primary"  type="submit" className='w-100'>
+            {loading &&   <i className='fas fa-spinner fa-spin mx-3'></i> }  Rigester Now
             </Button>
             {errorMsg && <p className='text-danger bg-danger-subtle'>{errorMsg}</p>}
           </Form>

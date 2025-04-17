@@ -9,14 +9,17 @@ import Note from '../../components/Note/Note';
 
 const Home = () => {
 
-  const [show, setShow] = useState(false);
   const [notes , setNotes] = useState(null) ;
-  const [noNotes , setNoNotes] = useState(false)
+  const [noNotes , setNoNotes] = useState(false) ;
+  const [loading , setLoading] = useState(false) ;
+  
+  
+  const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const displayNote = async ()=>{
-
+setLoading(true)
      axios.get(`https://note-sigma-black.vercel.app/api/v1/notes` , {
         headers : {
               token : `3b8ny__${localStorage.getItem("token")}`
@@ -24,12 +27,18 @@ const Home = () => {
         }
         
     }).then(({data})=>{
+      setLoading(true)
       console.log(data);
       setNotes(data.notes) ;
       setNoNotes(false)
     }).catch((err)=>{
       setNoNotes(true)
-    })
+      
+    }).finally(
+     ()=>{
+      setLoading(false)
+     }
+    )
     
 
 }
@@ -76,7 +85,17 @@ useEffect(()=>{
 
   return (
     <>
-     <div className='text-end p-5'>
+    {
+      loading  === true?  
+      <div className='w-100 vh-100 bg-info-subtle d-flex justify-content-center align-items-center '>
+<i className='fas fa-spinner fa-spin'></i>
+
+      </div>
+      :  
+
+      <>
+      
+      <div className='text-end p-5'>
      <Button className='me-auto' variant="primary" onClick={handleShow}>
         Add Note +
       </Button>
@@ -118,6 +137,8 @@ useEffect(()=>{
        }
         </div>
       </div>
+      </>
+    }
     </>
   )
 }

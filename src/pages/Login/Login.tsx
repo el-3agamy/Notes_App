@@ -71,7 +71,7 @@ const onSubmit =  (values : any)=>{
           {errors.password && touched.password && <div className='my-3 bg-danger-subtle p-2 rounded rounded-2'>{errors.password}</div>}
 
           <Button variant="primary" type="submit" className='w-100'>
-          {loading &&   <i className='fas fa-spinner fa-spin'></i> }Login
+          {loading &&   <i className='fas fa-spinner fa-spin mx-3'></i> }Login
           </Button>
           {errorMsg && <p className='text-danger bg-danger-subtle my-3 p-3 rounded rounded-2 text-center '>{errorMsg.toUpperCase()}</p>}
         </Form>

@@ -1,16 +1,20 @@
-import React from 'react'
+// import React, { useState } from 'react'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { Navigate, NavLink, useNavigate } from 'react-router-dom';
 
 const NavbarCom = () => {
   let userToken = localStorage.getItem("token");
-  let navigate = useNavigate()
+  let navigate = useNavigate() ;
+
+
   function removeToken() {
     localStorage.removeItem("token");
     navigate("")
   }
+
+
   return (
     <>
       <Navbar expand="lg" className="bg-body-tertiary">
@@ -27,11 +31,18 @@ const NavbarCom = () => {
                 </Nav>
 
                 : 
-                
+                 <>
+                 
+                 <Navigate to="home" /> 
+
                 <Nav className="ms-auto">
                   <NavLink onClick={removeToken} className="navLink" to="">Logout</NavLink>
                 </Nav>
-            }
+                 </>
+                
+                
+                }
+            
           </Navbar.Collapse>
         </Container>
       </Navbar>
