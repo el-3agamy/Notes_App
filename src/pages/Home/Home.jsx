@@ -51,7 +51,7 @@ useEffect(()=>{
 } , [])
 
 
-  const addNote =  (values : any)=>{
+  const addNote =  (values )=>{
      axios.post(`https://note-sigma-black.vercel.app/api/v1/notes` , values , {
       headers:{
         token : `3b8ny__${localStorage.getItem("token")}`
@@ -135,7 +135,9 @@ useEffect(()=>{
        <div className='container '>
        <div className="row justify-content-center align-items-center g-3">
        {
-          notes?.map((note  )=><div className='col-md-4 d-flex justify-content-center align-items-center  mx-auto'><Note  key={note._id} note={note}  displayNote={displayNote}/></div>)
+          notes?.map((note  )=><div className='col-md-4 d-flex justify-content-center align-items-center  mx-auto'>
+            <Note  key={note._id} note={note}  displayNote={displayNote}/>
+          </div>)
         }
        </div>
        </div>

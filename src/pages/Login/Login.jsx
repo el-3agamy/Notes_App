@@ -17,7 +17,7 @@ const navigate = useNavigate() ;
     password : Yup.string().required("Password is required")
   })
 
-const onSubmit =  (values : any)=>{
+const onSubmit =  (values )=>{
   // setErrorMsg('')
   setLoading(true)
     axios.post(`https://note-sigma-black.vercel.app/api/v1/users/signIn` , values)

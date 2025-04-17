@@ -9,9 +9,9 @@ import * as Yup from 'yup'
 const Register = () => {
   const [errorMsg , setErrorMsg] = useState(null)  ;
   const [loading , setLoading] = useState(false)
-  const navigate: any = useNavigate();
+  const navigate = useNavigate();
 
-  const onSubmit = async (values: object) => {
+  const onSubmit = async (values) => {
     setLoading(true)
     setErrorMsg(null)
     const { data } = await axios.post(`https://note-sigma-black.vercel.app/api/v1/users/signUp`, values)
@@ -34,7 +34,7 @@ const Register = () => {
     age: Yup.number().min(13, "Age must be 13 or older").max(99, "Max age is 99 years").required("Age is required"),
     phone: Yup.string().required("Phone is required").matches(/^01[0125][0-9]{8}$/, "Only Egyption Number.")
   })
-  const formik: any = useFormik({
+  const formik = useFormik({
 
     initialValues: {
       "name": "",

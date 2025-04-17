@@ -7,7 +7,7 @@ import Modal from 'react-bootstrap/Modal';
 import ListGroup from 'react-bootstrap/ListGroup';
 
 
-const Note = ({note  , displayNote}:any) => {
+const Note = ({note  , displayNote}) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -35,7 +35,7 @@ const Note = ({note  , displayNote}:any) => {
     
   // }
 
-  const updateNote =  (values : any )=>{
+  const updateNote =  (values  )=>{
     axios.put(`https://note-sigma-black.vercel.app/api/v1/notes/${note._id}` , values , {
      headers:{
        token : `3b8ny__${localStorage.getItem("token")}`
@@ -67,7 +67,7 @@ const Note = ({note  , displayNote}:any) => {
    onSubmit : updateNote
  })
 
-  function removeNote(id : any){
+  function removeNote(id ){
     axios.delete(`https://note-sigma-black.vercel.app/api/v1/notes/${id}` ,{
       headers:{
         token:`3b8ny__${localStorage.getItem("token")}`
