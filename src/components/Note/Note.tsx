@@ -7,7 +7,7 @@ import Modal from 'react-bootstrap/Modal';
 import ListGroup from 'react-bootstrap/ListGroup';
 
 
-const Note = ({note , index , displayNote}:any) => {
+const Note = ({note  , displayNote}:any) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);

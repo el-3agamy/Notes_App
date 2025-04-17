@@ -32,6 +32,8 @@ setLoading(true)
       setNotes(data.notes) ;
       setNoNotes(false)
     }).catch((err)=>{
+      console.log(err);
+      
       setNoNotes(true)
       
     }).finally(
@@ -133,7 +135,7 @@ useEffect(()=>{
        <div className='container '>
        <div className="row justify-content-center align-items-center g-3">
        {
-          notes?.map((note  , index)=><div className='col-md-4 d-flex justify-content-center align-items-center  mx-auto'><Note  key={note._id} note={note} index={index} displayNote={displayNote}/></div>)
+          notes?.map((note  )=><div className='col-md-4 d-flex justify-content-center align-items-center  mx-auto'><Note  key={note._id} note={note}  displayNote={displayNote}/></div>)
         }
        </div>
        </div>
