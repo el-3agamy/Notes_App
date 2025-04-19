@@ -37,12 +37,7 @@ const onSubmit =  (values )=>{
   setLoading(false)
 
     })
-  // if (data.msg === "done") {
-  //     navigate("home")
-  // }else{
-  //   setErrorMsg(data.msg)
-  // }
-  // setLoading(false)
+ 
   
 } 
 

@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css'
 // import ProtectedRouts from './protected/ProtectedRouts'
 import AuthContextProvider from './contexts/AuthContext'
+import CounterContextProvider from './contexts/CounterContextProvider'
 const App = () => {
 
   const router = createBrowserRouter([{
@@ -20,7 +21,9 @@ const App = () => {
   return (
     <>
       <AuthContextProvider>
-        <RouterProvider router={router} ></RouterProvider>
+        <CounterContextProvider>
+          <RouterProvider router={router} ></RouterProvider>
+        </CounterContextProvider>
 
       </AuthContextProvider>
     </>

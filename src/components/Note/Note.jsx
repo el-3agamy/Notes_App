@@ -13,27 +13,6 @@ const Note = ({note  , displayNote}) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  // function updateNote (id :any ){
-
-  //   axios.put(`https://note-sigma-black.vercel.app/api/v1/notes/${id}` ,{
-  //     title : note.title ,
-  //     content : note.content
-  //   } ,
-  //   {
-  //     headers : {
-  //       token : `3b8ny__${localStorage.getItem("token")}`
-  //     }
-  //   }
-  //  ).then(({data})=>{
-  //   console.log(data);
-    
-  //  }).catch((error)=>{
-  //   console.log(error.response.data);
-    
-  //  })
-  //   console.log("update");
-    
-  // }
 
   const updateNote =  (values  )=>{
     axios.put(`https://note-sigma-black.vercel.app/api/v1/notes/${note._id}` , values , {
@@ -54,7 +33,6 @@ const Note = ({note  , displayNote}) => {
      ()=>handleClose()
    )
 
-   // console.log(data);
    
    console.log("addNote");
    

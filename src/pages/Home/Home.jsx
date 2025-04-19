@@ -1,10 +1,11 @@
 import axios from 'axios';
 import { useFormik } from 'formik';
-import  { useEffect } from 'react'
+import  { useContext, useEffect } from 'react'
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Note from '../../components/Note/Note';
+import { CounterContext } from '../../contexts/CounterContextProvider';
 // import displayNote from '../../helpers/displayNote';
 
 const Home = () => {
@@ -12,7 +13,7 @@ const Home = () => {
   const [notes , setNotes] = useState([]) ;
   const [noNotes , setNoNotes] = useState(false) ;
   const [loading , setLoading] = useState(false) ;
-  
+  const{setCounter} = useContext(CounterContext) ;
   
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -28,6 +29,7 @@ setLoading(true)
         
     }).then(({data})=>{
       setLoading(true)
+      setCounter(data.notes.length)
       console.log(data);
       setNotes(data.notes) ;
       setNoNotes(false)
