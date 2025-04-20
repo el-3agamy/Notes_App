@@ -1,5 +1,5 @@
 import axios from 'axios';
-import  { useState } from 'react'
+import  {  useState } from 'react'
 import { useFormik } from 'formik';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -9,6 +9,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 
 const Note = ({note  , displayNote}) => {
   const [show, setShow] = useState(false);
+
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -52,7 +53,8 @@ const Note = ({note  , displayNote}) => {
       }
     }).then(({data})=>{
       console.log(data);
-      displayNote()
+      displayNote() ;
+
       
     })
     console.log(note._id);

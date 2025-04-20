@@ -41,7 +41,7 @@ const {counter} = useContext(CounterContext)
 
                   <Navigate to="home" />
                   <Button variant="primary">
-                    Profile <Badge bg="secondary">{counter}</Badge>
+                    Notes <Badge bg="secondary">{counter}</Badge>
                     <span className="visually-hidden">unread messages</span>
                   </Button>
                   <Nav className="ms-auto">

@@ -35,6 +35,7 @@ setLoading(true)
       setNoNotes(false)
     }).catch((err)=>{
       console.log(err);
+      setCounter(0)
       
       setNoNotes(true)
       
